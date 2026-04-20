@@ -71,6 +71,10 @@ html = re.sub(r"const OTHER_LABEL = '.*?';", f"const OTHER_LABEL = '{other_label
 sort_locale = config.get("sortLocale", "zh" if lang.startswith("zh") else "en")
 html = re.sub(r"const SORT_LOCALE = '.*?';", f"const SORT_LOCALE = '{sort_locale}';", html, count=1)
 
+# READONLY
+readonly = config.get("readOnly", False)
+html = re.sub(r"const READONLY = (true|false);", f"const READONLY = {'true' if readonly else 'false'};", html, count=1)
+
 # MAP_DEFAULT
 map_default = config.get("mapDefault")
 if not map_default and region_centers:

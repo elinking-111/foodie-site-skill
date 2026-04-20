@@ -456,7 +456,7 @@ body{
   <br><button class="btn-export" onclick="exportData()" style="margin-top:12px" id="exportBtn">导出数据 (data.js)</button>
 </div>
 
-<button class="fab" onclick="openModal()" id="fabBtn" title="添加新地点">+</button>
+<button class="fab" onclick="openModal()" id="fabBtn" title="添加新地点" style="display:none">+</button>
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
 <!-- CRUD Modal -->
@@ -546,6 +546,7 @@ const UI = {
   popupStar:'推荐',
   editTooltip:'编辑',deleteTooltip:'删除',
 };
+const READONLY = false;
 
 const CAT_EMOJI={}, CAT_LABEL={};
 CATEGORIES.forEach(c=>{ if(c.key!=='all'){CAT_EMOJI[c.key]=c.emoji; CAT_LABEL[c.key]=c.label;} });
@@ -678,6 +679,10 @@ function init(){
     catWrap.appendChild(btn);
   });
   buildDistrictFilters();
+  // Show FAB only when not readonly
+  if(!READONLY) document.getElementById('fabBtn').style.display='';
+  // Hide export button in readonly mode
+  if(READONLY) document.getElementById('exportBtn').style.display='none';
   // Init status filter default
   document.querySelectorAll('.status-btn').forEach(b=>{ b.classList.toggle('active',b.dataset.status==='all'); });
   // Search
@@ -816,12 +821,13 @@ function render(){
     if(d.desc && d.desc!==d.area) html+=`<span class="tag tag-feature">${esc(d.desc)}</span>`;
     (d.tags||[]).forEach(t=>{ html+=`<span class="tag tag-feature">${esc(t)}</span>`; });
     html+='</div>';
-    // Edit/delete — small icons bottom-right
+    if(!READONLY){
     html+='<div class="card-actions">';
     if(d._source==='user') html+='<span class="card-user-badge">'+UI.manual+'</span>';
     html+=`<button class="card-action-btn" onclick="openEditModal(${idx})" title="${UI.editTooltip}">&#9998;</button>`;
     html+=`<button class="card-action-btn card-action-delete" onclick="deleteItem(${idx})" title="${UI.deleteTooltip}">&times;</button>`;
     html+='</div>';
+    }
     html+='</div>';
     delay+=30;
   });
