@@ -83,6 +83,46 @@ Then prompt your coding agent with requests like:
 - `Keep this existing foodie site, but add shared likes`
 - `Make a showcase page explaining how this site was built`
 
+## Typical use cases
+
+### 1. Notes to site
+
+You have a messy list of restaurants and cafes in Apple Notes, pasted text, or exported files and want a clean website without manually writing HTML.
+
+### 2. Existing site upgrade
+
+You already have a foodie or travel site and want to improve filters, cards, layout, copy, or interaction design without rebuilding from scratch.
+
+### 3. Public showcase page
+
+You want a separate page that explains how the site was made, what prompts were used, or how the product evolved over time.
+
+## Prompt examples
+
+### Build from notes
+
+```text
+Turn this restaurant note into a GitHub Pages site. Keep the content in Chinese, infer categories and regions from the note, generate the data and config files, build the site from the template, and deploy it.
+```
+
+### Upgrade an existing site
+
+```text
+Inspect this existing foodie site first. Keep the current design direction, but improve the filter hierarchy, make the interaction buttons clearer, and preserve any custom logic already in the live page.
+```
+
+### Add shared interaction
+
+```text
+Add a lightweight shared like feature to this site. Use a shared backend so all visitors see the same count, keep the implementation minimal, and do not require a full comment system.
+```
+
+### Create a showcase page
+
+```text
+Create a separate showcase page for this project that explains the workflow from raw notes to live site, summarizes the key prompts used, and presents the build process in a way that is easy for non-technical users to understand.
+```
+
 ## Repo layout
 
 ```text
