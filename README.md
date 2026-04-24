@@ -2,10 +2,26 @@
 
 A reusable coding-agent skill for building and iteratively evolving foodie or travel review websites from notes, pasted text, files, or social posts.
 
+This skill exists for a very practical reason: many people already have valuable food and travel notes, but those notes usually stay trapped in memo apps, chat logs, or scattered lists. This skill turns that raw material into a navigable website, then keeps supporting the project as it grows.
+
 It supports both:
 
 - generating a new site from source notes
 - upgrading an existing live site without wiping custom product work
+
+## At a glance
+
+- source material: notes, pasted text, exported files, social-media lists
+- output: a browsable foodie or travel website
+- delivery: generated from a reusable template and deployable to GitHub Pages
+- follow-up support: iteration, shared interactions, showcase pages, owner-managed editing
+
+## Why this skill exists
+
+- most people already have the content, but not the structure
+- building the first usable version should be fast
+- later iterations should not destroy custom work already added to the site
+- a public-facing site often needs both content generation and product refinement over time
 
 ## What this skill is for
 
@@ -48,6 +64,22 @@ For improving an existing foodie or travel site:
 3. decide whether the change belongs in static content, browser state, or shared backend state
 4. patch the live page and template together when needed
 5. verify the latest deploy before closing out
+
+## Quick workflow
+
+```text
+notes / pasted content
+        ->
+structured place data
+        ->
+site config
+        ->
+template-based site generation
+        ->
+GitHub Pages deploy
+        ->
+later upgrades, shared features, and showcase pages
+```
 
 ## Input the skill can handle
 
