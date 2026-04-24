@@ -16,6 +16,14 @@ It supports both:
 - delivery: generated from a reusable template and deployable to GitHub Pages
 - follow-up support: iteration, shared interactions, showcase pages, owner-managed editing
 
+## Live example
+
+See a real deployed example here:
+
+- Live site: https://foodie.govibepark.com/
+
+![Live foodie site example](assets/live-example.png)
+
 ## Why this skill exists
 
 - most people already have the content, but not the structure

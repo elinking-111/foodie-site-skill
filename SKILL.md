@@ -21,6 +21,12 @@ The core principle is:
 
 If the repo includes both `assets/template.html` and `index.html`, treat the template as the mirror of the live page and keep them aligned when making product-layer changes.
 
+## Live Reference
+
+For a real deployed example of the kind of site this skill can produce, see:
+
+- https://foodie.govibepark.com/
+
 ## Workflow A: Greenfield Build
 
 Use this when the user wants to turn notes, lists, or social-media food content into a new site.
