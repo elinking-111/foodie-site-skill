@@ -1,61 +1,102 @@
 # foodie-site-skill
 
-A Claude Code skill that turns your personal food, restaurant, and travel notes into a beautiful, filterable, map-enabled static website — then deploys it to GitHub Pages.
+A reusable coding-agent skill for building and iteratively evolving foodie or travel review websites from notes, pasted text, files, or social posts.
 
-## What it does
+It supports both:
 
-Give it your notes in any format — Apple Notes, pasted text, social media posts (小红书, etc.) — and it generates a complete website with:
+- generating a new site from source notes
+- upgrading an existing live site without wiping custom product work
 
-- Filterable card grid by category, region, and area
-- Interactive Leaflet map with pins for every place
-- Visited/want-to-go status toggles
-- Star/recommend markers
-- Full-text search
-- Add/edit/delete places (saved in localStorage)
-- Data export
-- Fully responsive design
+## What this skill is for
 
-## Supported input formats
+Use this skill when you want to turn a list of restaurants, cafes, bars, bakeries, destinations, or places of interest into a browsable website with:
 
-- **Checklists**: `- [x] Place Name (description)`
-- **Simple lists**: `Name - description`
-- **Sectioned notes**: Headers like `## Beijing Food` group items by region
-- **Freeform text**: Mixed formats with emoji markers (🌟=favorite, ✅=visited)
-- **Social media**: Numbered lists, 📍 locations, 💰 prices, #hashtags
+- searchable cards
+- category, region, and area filters
+- map-based exploration
+- visited / want-to-go states
+- lightweight recommendation signals
+- GitHub Pages deployment
 
-Works in both Chinese and English — all UI text auto-localizes.
+It also covers common follow-up work on an existing site, such as:
 
-## How to use
+- title and copy changes
+- visual refinement
+- map and filter improvements
+- showcase / case-study pages
+- shared interactions like comments or likes
+- owner-managed editing of live entries
 
-### Install as a Claude Code skill
+## Workflow modes
+
+### 1. Greenfield build
+
+For turning raw notes into a new site:
+
+1. collect the notes
+2. parse them into `data.js`
+3. write `config.json`
+4. generate `index.html` from the bundled template
+5. deploy to GitHub Pages
+
+### 2. Iterative upgrade
+
+For improving an existing foodie or travel site:
+
+1. inspect the current page and template
+2. preserve existing visual and product logic
+3. decide whether the change belongs in static content, browser state, or shared backend state
+4. patch the live page and template together when needed
+5. verify the latest deploy before closing out
+
+## Input the skill can handle
+
+- checklist notes like `- [x]`
+- simple place lists
+- sectioned notes grouped by city or theme
+- messy freeform notes with emoji markers
+- copied social-media food lists with `📍`, hashtags, and price hints
+
+Chinese and English content are both supported.
+
+## How it works
+
+The skill is built around a template workflow instead of generating a full site from scratch each time.
+
+- `data.js` stores the parsed places
+- `config.json` defines site-level settings
+- `scripts/setup.py` injects config into `assets/template.html`
+- the result is a production-ready `index.html`
+
+This keeps generation stable while still allowing iterative product changes on top.
+
+## Install
 
 ```bash
 claude install-skill https://github.com/elinking-111/foodie-site-skill
 ```
 
-Then just tell Claude something like:
-- "帮我把这些笔记做成一个美食地图网站"
-- "Turn my restaurant list into a website"
+Then prompt your coding agent with requests like:
 
-### Architecture
+- `帮我把这份美食笔记做成一个网站`
+- `Turn my cafe list into a GitHub Pages site`
+- `Keep this existing foodie site, but add shared likes`
+- `Make a showcase page explaining how this site was built`
 
-The skill generates only two small files (`data.js` + `config.json`), then runs `setup.py` to customize a bundled production template into `index.html`. This avoids timeouts from generating 1100+ lines of HTML from scratch.
+## Repo layout
 
-```
+```text
 foodie-site-skill/
-├── SKILL.md              # Skill instructions
-├── assets/template.html  # Production HTML template (1100+ lines)
-├── scripts/setup.py      # Config → HTML customizer
-└── evals/evals.json      # Test cases
+├── SKILL.md
+├── README.md
+├── assets/template.html
+├── scripts/setup.py
+└── evals/evals.json
 ```
 
-## Examples
+## Design boundary
 
-| Input | Output |
-|-------|--------|
-| Chinese checklist (17 places) | Filterable site with Beijing/China/Overseas regions |
-| English list (12 NYC spots) | Fully English UI, map centered on Manhattan |
-| Xiaohongshu post (10 Chengdu places) | Social media format parsed, prices in descriptions |
+This repo is intentionally kept reusable. Project-specific modules such as personal community entry points, custom QR content, or one-off auth setup should stay in the consuming project rather than in the shared skill itself.
 
 ## License
 
