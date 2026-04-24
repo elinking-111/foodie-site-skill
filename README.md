@@ -16,28 +16,6 @@ It supports both:
 - delivery: generated from a reusable template and deployable to GitHub Pages
 - follow-up support: iteration, shared interactions, showcase pages, owner-managed editing
 
-## Before / After
-
-### Before
-
-```text
-- [x] Baker & Spice - brunch, good coffee
-- [ ] A hidden ramen place in Jing'an
-- Cafe by the river (great for reading)
-- 成都：几家想去的火锅和小酒馆
-```
-
-### After
-
-```text
-A live website with:
-- searchable place cards
-- category and region filters
-- map browsing
-- visited / want-to-go states
-- a structure that can keep evolving instead of being rebuilt from zero
-```
-
 ## Why this skill exists
 
 - most people already have the content, but not the structure
